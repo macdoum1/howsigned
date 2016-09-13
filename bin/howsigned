@@ -1,1 +1,33 @@
-puts "Hello world"
+# Heavily inspired by Shenzhen's `ipa info`
+# https://github.com/nomad/shenzhen/blob/master/lib/shenzhen/commands/info.rb
+
+#!/usr/bin/env ruby
+
+require 'plist'
+require 'zip'
+require 'zip/filesystem'
+
+def validate_ipa!
+files = Dir['*.ipa']
+@file ||= case files.length
+		  when 0 then nil
+		  when 1 then files.first
+		  else
+		     @file = choose "Select an .ipa", *files
+		  end
+end
+
+validate_ipa! unless @file = ARGV[0]
+puts "Missing or unspecified .ipa file" and abort unless @file and ::File.exist?(@file)
+
+tempdir = ::File.new(Dir.mktmpdir)
+
+unzip = `unzip "#{@file}" -d "#{tempdir}"`
+
+Dir.glob("#{tempdir}/**/*.app") do |file|
+	puts "###### Path: #{file} #######"
+	entitlements = `codesign -d --entitlements :- "#{file}"`
+	puts entitlements
+	puts "#########################\n\n"
+end
+
