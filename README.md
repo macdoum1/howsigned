@@ -5,6 +5,5 @@ Ruby gem utility to see how binaries contained in an .ipa are signed
 ```gem install howsigned```
 
 # Usage
-```howsigned test.ipa```
-
+```howsigned entitlements test.ipa```
 Output is valid plist
