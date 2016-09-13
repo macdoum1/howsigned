@@ -23,7 +23,7 @@ puts "Missing or unspecified .ipa file" and abort unless @file and ::File.exist?
 tempdir = ::File.new(Dir.mktmpdir)
 unzip = `unzip "#{@file}" -d "#{tempdir.path}"`
 
-Dir.glob("#{tempdir}/**/*.app") do |file|
+Dir.glob("#{tempdir.path}/**/*.app") do |file|
 	puts "###### Path: #{file} #######"
 	entitlements = `codesign -d --entitlements :- "#{file}"`
 	puts entitlements
