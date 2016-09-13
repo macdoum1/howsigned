@@ -1,7 +1,7 @@
+#!/usr/bin/env ruby
+
 # Heavily inspired by Shenzhen's `ipa info`
 # https://github.com/nomad/shenzhen/blob/master/lib/shenzhen/commands/info.rb
-
-#!/usr/bin/env ruby
 
 require 'plist'
 require 'zip'

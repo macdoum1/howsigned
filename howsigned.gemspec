@@ -8,6 +8,7 @@ Gem::Specification.new do |s|
   s.email       = 'mmacdougall@etsy.com'
   s.executables << 'howsigned'
   s.license     = 'MIT'
-  s.add_dependency "plist", "~> 3.1.0"
+  s.homepage    = "http://www.etsy.com"
+  s.add_dependency "plist", "~> 3.1"
   s.add_dependency "rubyzip", "~> 1.1"
 end
