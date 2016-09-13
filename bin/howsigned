@@ -21,8 +21,7 @@ validate_ipa! unless @file = ARGV[0]
 puts "Missing or unspecified .ipa file" and abort unless @file and ::File.exist?(@file)
 
 tempdir = ::File.new(Dir.mktmpdir)
-
-unzip = `unzip "#{@file}" -d "#{tempdir}"`
+unzip = `unzip "#{@file}" -d "#{tempdir.path}"`
 
 Dir.glob("#{tempdir}/**/*.app") do |file|
 	puts "###### Path: #{file} #######"
