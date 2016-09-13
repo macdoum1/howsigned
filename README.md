@@ -6,3 +6,5 @@ Ruby gem utility to see how binaries contained in an .ipa are signed
 
 # Usage
 ```howsigned test.ipa```
+
+Output is valid plist
