@@ -23,10 +23,23 @@ puts "Missing or unspecified .ipa file" and abort unless @file and ::File.exist?
 tempdir = ::File.new(Dir.mktmpdir)
 unzip = `unzip "#{@file}" -d "#{tempdir.path}"`
 
+entitlements_hash = Hash.new
+
+# .app
 Dir.glob("#{tempdir.path}/**/*.app") do |file|
-	puts "###### Path: #{file} #######"
-	entitlements = `codesign -d --entitlements :- "#{file}"`
-	puts entitlements
-	puts "#########################\n\n"
+	entitlements = `codesign -d --entitlements :- "#{file}" 2>&1`
+	plist_entitlements = Plist::parse_xml(entitlements)
+	application_identifier = plist_entitlements["application-identifier"]
+	entitlements_hash[application_identifier] = plist_entitlements
 end
+
+# .appex
+Dir.glob("#{tempdir.path}/**/*.appex") do |file|
+	entitlements = `codesign -d --entitlements :- "#{file}" 2>&1`
+	plist_entitlements = Plist::parse_xml(entitlements)
+	application_identifier = plist_entitlements["application-identifier"]
+	entitlements_hash[application_identifier] = plist_entitlements
+end
+
+puts entitlements_hash.to_plist
 
