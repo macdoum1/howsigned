@@ -2,8 +2,11 @@
 
 require 'rubygems'
 require 'commander/import'
-require 'entitlements'
 
-program :version, '0.0.3'
+require 'entitlements'
+require 'profiles'
+require 'verify'
+
+program :version, '0.0.4'
 program :description, 'Utility to determine codesigning on contained binaries in an .ipa'
 

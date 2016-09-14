@@ -4,46 +4,32 @@
 require 'plist'
 require 'zip'
 require 'zip/filesystem'
+require 'validate_ipa'
+require 'extract_zip'
 
-def validate_ipa!
-files = Dir['*.ipa']
-@file ||= case files.length
-		  when 0 then nil
-		  when 1 then files.first
-		  else
-		     @file = choose "Select an .ipa", *files
-		  end
+def append_entitlements(path, entitlements_hash)
+	Dir.glob(path) do |file|
+		entitlements = `codesign -d --entitlements :- "#{file}" 2>&1`
+		plist_entitlements = Plist::parse_xml(entitlements)
+		application_identifier = plist_entitlements["application-identifier"]
+		entitlements_hash[application_identifier] = plist_entitlements
+	end
 end
 
 command :entitlements do |c|
   c.syntax = 'howsigned entitlements [.ipa file]'
-  c.summary = ''
-  c.description = ''
-  c.example 'description', 'command example'
+  c.description = 'Prints entitlements of specified .ipa in plist format'
   c.action do |args, options|
   	validate_ipa! unless @file = args.pop
 	puts "Missing or unspecified .ipa file" and abort unless @file and ::File.exist?(@file)
 
 	tempdir = ::File.new(Dir.mktmpdir)
-	unzip = `unzip "#{@file}" -d "#{tempdir.path}"`
+	extract_zip(@file, tempdir)
 
 	entitlements_hash = Hash.new
 
-	# .app
-	Dir.glob("#{tempdir.path}/**/*.app") do |file|
-		entitlements = `codesign -d --entitlements :- "#{file}" 2>&1`
-		plist_entitlements = Plist::parse_xml(entitlements)
-		application_identifier = plist_entitlements["application-identifier"]
-		entitlements_hash[application_identifier] = plist_entitlements
-	end
-
-	# .appex
-	Dir.glob("#{tempdir.path}/**/*.appex") do |file|
-		entitlements = `codesign -d --entitlements :- "#{file}" 2>&1`
-		plist_entitlements = Plist::parse_xml(entitlements)
-		application_identifier = plist_entitlements["application-identifier"]
-		entitlements_hash[application_identifier] = plist_entitlements
-	end
+	append_entitlements("#{tempdir.path}/**/*.app", entitlements_hash)
+	append_entitlements("#{tempdir.path}/**/*.appex", entitlements_hash)
 
 	puts entitlements_hash.to_plist
   end
