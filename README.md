@@ -2,6 +2,8 @@
 howsigned is a ruby gem utility to see how binaries contained in an .ipa are signed
 Ruby gem utility to see how binaries contained in an .ipa are signed
 
+The contained binary extensions used with the commands are defined here: https://github.etsycorp.com/mmacdougall/howsigned/blob/master/lib/contained_binaries_definition.rb
+
 https://rubygems.org/gems/howsigned
 
 # Installation
