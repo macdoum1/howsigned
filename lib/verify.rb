@@ -3,6 +3,7 @@ require 'zip'
 require 'zip/filesystem'
 require 'validate_ipa'
 require 'extract_zip'
+require 'contained_binaries_definition'
 
 def verify_binaries(path)
 	Dir.glob(path) do |file|
@@ -25,8 +26,9 @@ command :verify do |c|
 
 	entitlements_hash = Hash.new
 
-	verify_binaries("#{tempdir.path}/**/*.app")
-	verify_binaries("#{tempdir.path}/**/*.appex")
+	contained_binary_extensions().each { |extension|
+		verify_binaries("#{tempdir.path}/**/*.#{extension}")
+	}
   end
 end
 

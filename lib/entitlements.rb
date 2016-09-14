@@ -6,6 +6,7 @@ require 'zip'
 require 'zip/filesystem'
 require 'validate_ipa'
 require 'extract_zip'
+require 'contained_binaries_definition'
 
 def append_entitlements(path, entitlements_hash)
 	Dir.glob(path) do |file|
@@ -28,8 +29,9 @@ command :entitlements do |c|
 
 	entitlements_hash = Hash.new
 
-	append_entitlements("#{tempdir.path}/**/*.app", entitlements_hash)
-	append_entitlements("#{tempdir.path}/**/*.appex", entitlements_hash)
+	contained_binary_extensions().each { |extension|
+		append_entitlements("#{tempdir.path}/**/*.#{extension}", entitlements_hash)
+	}
 
 	if (entitlements_hash.length == 0)
 		abort "No entitlements found on contained binaries"

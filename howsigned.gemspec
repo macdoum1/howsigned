@@ -13,7 +13,8 @@ Gem::Specification.new do |s|
                    'lib/profiles.rb',
                    'lib/verify.rb',
                    'lib/validate_ipa.rb',
-                   'lib/extract_zip.rb']
+                   'lib/extract_zip.rb',
+                   'lib/contained_binaries_definition.rb']
   s.add_dependency "plist", "~> 3.1"
   s.add_dependency "rubyzip", "~> 1.1"
   s.add_dependency "commander", "~> 4.3"
