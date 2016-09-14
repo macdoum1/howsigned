@@ -13,6 +13,6 @@ To print entitlements of all contained binaries in plist format keyed by applica
 To print all embedded provisioning profiles of contained binaries in plist format keyed by AppNameID
 ```howsigned profiles test.ipa```
 
-To check codesigning on all contained binaries (will print nothing if all signed correctly)
+To check codesigning on all contained binaries
 ```howsigned verify test.ipa```
 
