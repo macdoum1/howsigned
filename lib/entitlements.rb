@@ -31,6 +31,10 @@ command :entitlements do |c|
 	append_entitlements("#{tempdir.path}/**/*.app", entitlements_hash)
 	append_entitlements("#{tempdir.path}/**/*.appex", entitlements_hash)
 
+	if (entitlements_hash.length == 0)
+		abort "No entitlements found on contained binaries"
+	end
+
 	puts entitlements_hash.to_plist
   end
 end

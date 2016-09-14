@@ -13,6 +13,9 @@ def get_profiles(path)
 		profiles[app_id] = plist_profile
 	end
 
+	if (profiles.length == 0)
+		abort "No embedded provisioning profiles found"
+	end
 	return profiles.to_plist
 end
 

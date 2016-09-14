@@ -7,7 +7,7 @@ require 'extract_zip'
 def verify_binaries(path)
 	Dir.glob(path) do |file|
 		codesign = `codesign --verify "#{file}" 2>&1`
-		if(!codesign.to_s.empty?)
+		if (!codesign.to_s.empty?)
 			puts codesign
 		end
 	end
@@ -25,15 +25,8 @@ command :verify do |c|
 
 	entitlements_hash = Hash.new
 
-	app_codesign = verify_binaries("#{tempdir.path}/**/*.app")
-	if(!app_codesign.to_s.empty?)
-		puts app_codesign
-	end
-
-	appex_codesign = verify_binaries("#{tempdir.path}/**/*.appex")
-	if(!appex_codesign.to_s.empty?)
-		puts appex_codesign
-	end
+	verify_binaries("#{tempdir.path}/**/*.app")
+	verify_binaries("#{tempdir.path}/**/*.appex")
   end
 end
 
