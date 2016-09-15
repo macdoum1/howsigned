@@ -23,3 +23,7 @@ To check codesigning on all contained binaries
 
 ```howsigned verify test.ipa```
 
+To compare entitlements and profiles between two .ipa files
+
+```howsigned compare testA.ipa testB.ipa```
+
