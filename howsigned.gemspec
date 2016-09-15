@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'howsigned'
-  s.version     = '0.0.5'
+  s.version     = '0.0.6'
   s.date        = '2016-09-13'
   s.summary     = "Howsigned?"
   s.description = "Utility to see how the contained binaries within an .ipa are signed"
@@ -12,6 +12,7 @@ Gem::Specification.new do |s|
   s.files       = ['lib/entitlements.rb',
                    'lib/profiles.rb',
                    'lib/verify.rb',
+                   'lib/compare.rb',
                    'lib/validate_ipa.rb',
                    'lib/extract_zip.rb',
                    'lib/contained_binaries_definition.rb']

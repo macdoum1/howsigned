@@ -18,11 +18,10 @@ command :verify do |c|
   c.syntax = 'howsigned verify [.ipa file]'
   c.description = 'Verifies the code signature of all binaries contained within the .ipa, will return nothing if signed correctly'
   c.action do |args, options|
-  	validate_ipa! unless @file = args.pop
-	puts "Missing or unspecified .ipa file" and abort unless @file and ::File.exist?(@file)
+	file = validate_ipa(args.pop)
 
 	tempdir = ::File.new(Dir.mktmpdir)
-	extract_zip(@file, tempdir)
+	extract_zip(file, tempdir)
 
 	entitlements_hash = Hash.new
 
