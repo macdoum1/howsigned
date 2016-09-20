@@ -18,6 +18,10 @@ To print all embedded provisioning profiles of contained binaries in plist forma
 
 ```howsigned profiles test.ipa```
 
+To print expiration dates of all provisioning profiles in plist format keyed by AppNameID
+
+```howsigned profiles --expiration test.ipa```
+
 To check codesigning on all contained binaries
 
 ```howsigned verify test.ipa```
