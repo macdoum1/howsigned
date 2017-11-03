@@ -1,14 +1,15 @@
 Gem::Specification.new do |s|
   s.name        = 'howsigned'
-  s.version     = '0.0.6'
+  s.version     = '0.0.7'
   s.date        = '2016-09-13'
-  s.summary     = "Howsigned?"
   s.description = "Utility to see how the contained binaries within an .ipa are signed"
+  s.summary 	= s.description
   s.authors     = ["Michael MacDougall"]
   s.email       = 'mmacdougall@etsy.com'
   s.executables << 'howsigned'
   s.license     = 'MIT'
-  s.homepage    = "http://www.etsy.com"
+  s.homepage    = "https://github.com/macdoum1/howsigned"
+  s.metadata = { "source_code_uri" => "https://github.com/macdoum1/howsigned" }
   s.files       = ['lib/entitlements.rb',
                    'lib/profiles.rb',
                    'lib/verify.rb',
