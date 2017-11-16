@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'howsigned'
-  s.version     = '0.0.7'
-  s.date        = '2016-09-13'
+  s.version     = '0.0.8'
+  s.date        = '2017-11-16'
   s.description = "Utility to see how the contained binaries within an .ipa are signed"
   s.summary 	= s.description
   s.authors     = ["Michael MacDougall"]
