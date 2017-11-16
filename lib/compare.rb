@@ -26,8 +26,8 @@ command :compare do |c|
 	first_entitlements = get_entitlements(first_tempdir.path)
 	second_entitlements = get_entitlements(second_tempdir.path)
 
-	first_profiles = get_profiles(first_tempdir.path)
-	second_profiles = get_profiles(second_tempdir.path)
+	first_profiles = get_profiles(first_tempdir.path, false)
+	second_profiles = get_profiles(second_tempdir.path, false)
 
 	temp_plist_dir = ::File.new(Dir.mktmpdir).path
 	write_plist_to_path(first_entitlements, "#{temp_plist_dir}/entitlements1.plist")
