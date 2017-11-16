@@ -8,6 +8,6 @@ require 'profiles'
 require 'verify'
 require 'compare'
 
-program :version, '0.0.8'
+program :version, '0.0.9'
 program :description, 'Utility to determine codesigning on contained binaries in an .ipa'
 
