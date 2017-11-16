@@ -11,8 +11,8 @@ def write_plist_to_path(plist, path)
 end
 
 command :compare do |c|
-  c.syntax = 'howsigned entitlements [.ipa file]'
-  c.description = 'Prints entitlements of specified .ipa in plist format'
+  c.syntax = 'howsigned compare [.ipa file] [.ipa file]'
+  c.description = 'Prints diff of entitlements of specified .ipa files in plist format, nothing if entitlements are identical'
   c.action do |args, options|
 	first_file = validate_ipa(args.pop)
 	second_file = validate_ipa(args.pop)
