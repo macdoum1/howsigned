@@ -2,3 +2,9 @@ language: ruby
 rvm:
   - 2.2
   - jruby
+deploy:
+  provider: rubygems
+  on:
+    tags: true
+  api_key:
+    secure: kmY/DI0iAsEBiBrBN6nr8L+PuHgBs8jMptuDRALu7stVOCbk4/Uvky428/6lkY7dOvdGegAzPLtFMutw2xQCzEqfmziQJ0GpwT3KqjXenmcZ5xv3yHmK/5z+3UcDoZWYyQiTeoHi4jM59TmDyVYSSiAav/A+EqlldfIaSFES3o6+kZ7sMhyoWn17FgAvaU/bgh9UuWK1E8ygu1H3lhDSY6SJj2gLGrSczndyONuTDkL4bS4SE45tRjy+p3GdusiVWoD8jNHVEOT8Y3YFT8Z6AVlbmOUOqk7srnhwV86n1F2dYoU6d9mdx+GVzXNuIKOrKZGwwf/dZMIsjS5mSdMCuN8L6wAY8wA8Hw62LEuporrL5DH8pyTyCXzKeaM6j3MHUowQDvK+nexc6IxzyNA7VSQamwsLEkAF4bKmCMNL4BrETYatp7BTj38TMyxhZc6DTwf6069jFhnLumqUgmwsFwVlKeiSvYUUKSEhlzNCxAvmvnwznd6uW65VBf7nSyaM8SZC3qjHikwn3LzpbVbDimgnA7xBUlxoIWL7fZkE+hD/Cples0P+1l9YZZsdvr5boHpSjatLbuQTUfsizt0eMexuoSQceffIo2sEhNMDQqG6c3IOTvf2YZrAQQAYEDDFlwVM+HXMdPhCkS/FE/eJKJ5sfmMBu/FSP+tlodU6h8M=
