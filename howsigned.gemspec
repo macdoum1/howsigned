@@ -1,9 +1,9 @@
 Gem::Specification.new do |s|
   s.name        = 'howsigned'
-  s.version     = '0.0.9'
-  s.date        = '2017-11-16'
+  s.version     = '1.0.2'
+  s.date        = '2018-06-28'
   s.description = "Utility to see how the contained binaries within an .ipa are signed"
-  s.summary 	= s.description
+  s.summary 	= "Has the ability to print entitlements or embedded profiles from an ipa as well as compare and verify signing"
   s.authors     = ["Michael MacDougall"]
   s.email       = 'mmacdougall@etsy.com'
   s.executables << 'howsigned'
